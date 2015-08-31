@@ -1,7 +1,8 @@
 
 {
   "institution" : "IMCK",
-  "imck" : "IMCK",
+  "reportName" : "Journalier",
+  "hbb" : "HBB",
   "pax" : "PAX",
   "header" : {
     "overview" : "Sommaire",

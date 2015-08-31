@@ -1,18 +1,18 @@
 module.exports = {
   'emails' : [{
     'name' : 'daily',
-    //*/3 * * * * (for test)
-    'frequency' : '0 18 * * *', 
-    'addressList' : 'developers',
+    'frequency' : '*/3 * * * *', //(for test) 
+    // 'frequency' : '0 18 * * *', 
+    'addressList' : 'test',
   }, {
     'name' : 'weekly',
-    // */2 * * * * (for test)
-    'frequency' : '0 19 * * 7',
-    'addressList' : 'wk'
+    'frequency' : '*/2 * * * *', //(for test) 
+    // 'frequency' : '0 19 * * 7',
+    'addressList' : 'test'
   }, {
     'name' : 'monthly',
-    // 'frequency' : '*/1 * * * *',// */1 * * * * (for test)//'0 20 28-31 * *', 
-    'frequency' : '0 20 28-31 * *',
+     'frequency' : '*/1 * * * *', //(for test) 
+    // 'frequency' : '0 20 28-31 * *',
     'addressList' : 'test'
   }]
 }
