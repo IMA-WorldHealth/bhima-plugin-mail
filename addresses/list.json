@@ -1,6 +1,7 @@
 {
   "developers" : ["Steven Fountain", "Jonathan Niles", "Dedrick Kitamuka"],
-  "wk" : ["Larry Sthreshley", "Wayne Niles", "Bernard Kabibu", "Dedrick Kitamuka", "Jonathan Niles"],
-  "mn" : ["Larry Sthreshley", "Wayne Niles", "Bernard Kabibu", "Dedrick Kitamuka", "Jonathan Niles"],
+  "wk" : ["Larry Sthreshley", "Wayne Niles", "Bernard Kabibu", "Dedrick Kitamuka", "Jonathan Niles", "Alex Mayambi"],
+  "mn" : ["Larry Sthreshley", "Wayne Niles", "Bernard Kabibu", "Dedrick Kitamuka", "Jonathan Niles", "Alex Mayambi"],
+  "da" : ["Bernard Kabibu", "Dedrick Kitamuka", "Moise Ngalamulume"],
   "test" : ["Dedrick Kitamuka"]
 }

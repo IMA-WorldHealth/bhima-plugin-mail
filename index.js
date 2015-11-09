@@ -157,6 +157,7 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
 
       var results = rows
 
+
       // if the result is a currency, make sure it is in the correct locality
       // NOTE : this is NOT the email locality, it is defined by the query.
       if (template.type === 'currency') {
@@ -191,8 +192,6 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
 
     data = lineUp(data);
 
-    console.log(data);
-
     // now, we want to render the language file
     // util.map() applies the function provided recursively
     // to all non-object values in the object
@@ -212,6 +211,7 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
 
     // render the email
     message = render(tpl, options);
+
 
     // use mailer to send the message
     return mailer(list, contact, message, date);

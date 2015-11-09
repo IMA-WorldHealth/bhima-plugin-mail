@@ -1,76 +1,75 @@
-
 {
   "institution" : "IMCK",
-  "reportName" : "Journalier",
-  "hbb" : "HBB",
+  "reportName" : "Daily",
   "pax" : "PAX",
-  "header" : {
-    "overview" : "Sommaire",
-    "accounts" : "Comptes",
-    "principal" : "Caisse Principal",
-    "experimental" : "Rapport Experimental"
+  "hbb" : "HBB",
+  "header"         : {
+    "overview"     : "Overview",
+    "accounts"     : "Accounts",
+    "principal"    : "Principal Cash",
+    "experimental" : "Experimental Reports"
   },
-  "overview"  : {
+  "overview" : {
     "rubrics"                  : "Rubrics",
-    "newPatients"              : "Nouveau Patients",
-    "returningPatients"        : "Ancienne Patients",
-    "totalPatients"            : "Nombre de Patients",
-    "newFicheSales"            : "Ventes 'Nouvelle Fiche'",
-    "oldFicheSales"            : "Ventes 'Ancienne Fiche'",
-    "totalFicheSales"          : "Nombre des Ventes Fiches",
-    "totalInvoiceTransactions" : "Nombre des Factures",
-    "totalLines"               : "Nombre des Items dans les Factures"
+    "newPatients"              : "New Patients",
+    "returningPatients"        : "Returning Patients",
+    "totalPatients"            : "Total Patients",
+    "newFicheSales"            : "'Nouvelle Fiche' Sales",
+    "oldFicheSales"            : "'Ancienne Fiche' Sales",
+    "totalFicheSales"          : "Total Fiche Sales",
+    "totalInvoiceTransactions" : "Total Invoice Transactions",
+    "totalLines"               : "Total Invoice Line Items"
   },
   "registration" : {
-    "heading" : "Enregistrement des Patients",
-    "content" : "Aujourd'hui, {{ this.queries.newPatientsHbb + this.queries.returningPatientsHbb }} patient(s) etaient enregistre(s); {{ this.queries.newPatientsHbb }} nouveau patient(s), et {{ this.queries.returningPatientsHbb }} revenu(s)."
+    "heading" : "Patient Registration",
+    "content" : "Today, {{ this.queries.newPatientsHbb.total + this.queries.returningPatientsHbb.total }} patients were registered; {{ this.queries.newPatientsHbb.total }} patients new to the hospital, and {{ this.queries.returningPatientsHbb.total }} returning."
   },
   "cash" : {
     "hbb" : {
-      "heading" : "Caisse HBB",
-      "content" : "{{ this.queries.auxCashHbb }} etaient entrees dans la caisse auxilliaire HBB, payes contre un total de {{ this.queries.auxCashTotalInvoiceHbb }} factures."
+      "heading" : "HBB Cash Box",
+      "content" : "{{ this.queries.auxCashHbb.total }} were introduced at the Caisse Aux HBB, paid against a total of {{ this.queries.auxCashTotalInvoiceHbb.total }} invoices."
     },
     "pax" : {
-      "heading" : "Caisse PAX",
-      "content" : "{{ this.queries.auxCashPax }} etaient entrees dans la caisse auxilliaire PAX, payes contre un total de {{ this.queries.auxCashTotalInvoicePax }} factures."
+      "heading" : "PAX Cash Box",
+      "content" : "{{ this.queries.auxCashPax.total }} were introduced at the Caisse Aux PAX, paid against a total of {{ this.queries.auxCashTotalInvoicePax.total }} invoices."
     }
   },
   "subsidy" : {
-    "heading" : "Compte IMA",
-    "content" : "Le compte d'IMA etait charge avec un total de <strong style='font-size: 18px; color: #686868;'>{{ this.queries.imaSubsidyTotal }}</strong> aidant <strong style='font-size: 18px; color: #686868;'>{{ this.imaSubsidyPatients }}</strong> pour recevoir des soins."
+    "heading" : "IMA Subsidy",
+    "content" : "The IMA subsidy was charged a total of <strong style='font-size: 18px; color: #686868;'>{{ this.queries.imaSubsidyTotal.total }}</strong> enabling <strong style='font-size: 18px; color: #686868;'>{{ this.queries.imaSubsidyPatients.total }}</strong> patients to receive health care."
   },
   "principal" : {
     "incomeExpense" : {
       "heading" : "Income/ Expenditure",
-      "content" : "Today, a value of <strong style='font-size: 18px; color: #686868;'>{{ this.queries.principalCashIncomeHbb }}</strong> was recorded as entering the principal cash box; a value of <strong style='font-size: 18px; color: #686868;'>{{ this.queries.principalCashExpenseHbb }}</strong> was recorded as expense."
+      "content" : "Today, a value of <strong style='font-size: 18px; color: #686868;'>{{ this.queries.principalCashIncomeHbb.total }}</strong> was recorded as entering the principal cash box; a value of <strong style='font-size: 18px; color: #686868;'>{{ this.queries.principalCashExpenseHbb.total }}</strong> was recorded as expense."
     },
     "balance" : {
       "heading" : "Balance",
-      "content" : "The balance reported by the principal cash box has a value of <strong style='font-size: 18px; color: #686868;'>{{ this.queries.principalCashBalanceHbb}}</strong>."
+      "content" : "The balance reported by the principal cash box has a value of <strong style='font-size: 18px; color: #686868;'>{{ this.queries.principalCashBalanceHbb.total}}</strong>."
     }
   },
   "sale" : {
-    "heading" : "Facture",
-    "content" : "{{ this.queries.totalSalesHbb}} des factures ont ete envoyees correspondant aux %s lignes d'item, Ceci concerne les factures des patients ambulatoires et hospitalises."
+    "heading" : "Invoice",
+    "content" : "{{ this.queries.totalSalesHbb.total}} invoice transactions were submitted; this includes both hospitalised and outpatient invoices."
   },
   "fiche" : {
-    "heading" : "Consultation Fiche",
-    "content" : "Un total de {{ this.queries.newFicheSalesHbb + this.queries.oldFicheSalesHbb }} etait fait pour les fiches de consulation; {{ this.queries.newFicheSalesHbb }}  pour 'Nouvelle Fiche' et {{ this.queries.oldFicheSalesHbb }} pour 'Anciennce Fiche'."
+    "heading" : "Fiche Consultation",
+    "content" : "A total of {{ this.queries.newFicheSalesHbb.total + this.queries.oldFicheSalesHbb.total }} charges were made for fiche consultations; {{ this.queries.newFicheSalesHbb.total }} for 'Nouvelle Fiche' and {{ this.queries.oldFicheSalesHbb.total }} for 'Anciennce Fiche'."
   },
   "notices" : {
     "info" : {
-      "heading" : "Information",
-      "content" : "Veillez remarquer qu'il s'agit d'un rapport automatique base sur les donnees capturees par le systeme BHIMA. Il est cense fournir un rapport transparent concernant la finance et autres activites administratives a l'administration IMCK. Ce message n'apparaittra plus une seconde fois."
+      "heading" : "Info",
+      "content" : "Please note this is an automated report based on queries captured by BHIMA. It is intended to provide transparent financial and system health information to the administration of IMCK. This message will not be shown again."
     },
     "pax" : {
       "heading" : "PAX",
-      "content" : "BHIMA est entrain d'etre installe a PAX. Ce rapport va inclure les information de l'IMCK dans son entirete PAX et HBB comprises."
+      "content" : "BHIMA is currently being installed at PAX. Following reports will include queries for the enterprise as a whole, including both HBB and PAX."
     }
   },
   "warnings" : {
     "network" : {
-      "heading" : "[Gestion du Reseau]",
-      "content" : "La connexion entre HBB and PAX ne pouvait pas etre etabli aujourd'hui."
+      "heading" : "[Network Manager]",
+      "content" : "The radio connection between HBB and PAX could not be established today."
     },
     "upgrade" : {
       "heading" : "[ADMIN]",

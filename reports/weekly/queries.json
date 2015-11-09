@@ -97,8 +97,14 @@
     "type" : "currency",
     "format" : "en"
   },
-  "subsidyIma" : {
-    "query" : "SELECT SUM(t.debit_equiv - t.credit_equiv) as \"total\", DAYNAME(t.trans_date) as period FROM (SELECT p.debit_equiv, p.credit_equiv, p.trans_date FROM posting_journal as p WHERE p.account_id = 3551 AND trans_date >= {{ this.date.from }} AND trans_date <= {{ this.date.to }} UNION ALL SELECT g.debit_equiv, g.credit_equiv, g.trans_date FROM general_ledger as g WHERE g.account_id = 3551 AND trans_date >= {{ this.date.from }} AND trans_date <= {{ this.date.to }}) as t GROUP BY period;",
+  "subsidyImaHbb" : {
+    "query" : "SELECT SUM(t.debit_equiv - t.credit_equiv) as \"total\", DAYNAME(t.trans_date) as period FROM (SELECT p.debit_equiv, p.credit_equiv, p.trans_date FROM posting_journal as p WHERE p.account_id = 3551 AND trans_date >= {{ this.date.from }} AND trans_date <= {{ this.date.to }} AND project_id = 1 UNION ALL SELECT g.debit_equiv, g.credit_equiv, g.trans_date FROM general_ledger as g WHERE g.account_id = 3551 AND trans_date >= {{ this.date.from }} AND trans_date <= {{ this.date.to }} AND project_id = 1) as t GROUP BY period;",
+    "type" : "currency",
+    "format" : "en"
+  },
+
+  "subsidyImaPax" : {
+    "query" : "SELECT SUM(t.debit_equiv - t.credit_equiv) as \"total\", DAYNAME(t.trans_date) as period FROM (SELECT p.debit_equiv, p.credit_equiv, p.trans_date FROM posting_journal as p WHERE p.account_id = 3551 AND trans_date >= {{ this.date.from }} AND trans_date <= {{ this.date.to }} AND project_id = 2 UNION ALL SELECT g.debit_equiv, g.credit_equiv, g.trans_date FROM general_ledger as g WHERE g.account_id = 3551 AND trans_date >= {{ this.date.from }} AND trans_date <= {{ this.date.to }} AND project_id = 2) as t GROUP BY period;",
     "type" : "currency",
     "format" : "en"
   }

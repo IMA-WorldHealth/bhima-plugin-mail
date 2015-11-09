@@ -1,6 +1,6 @@
 {
   "institution" : "IMCK",
-  "freq" : "Daily",
+  "reportName" : "Daily",
   "pax" : "PAX",
   "hbb" : "HBB",
   "header"         : {
@@ -54,16 +54,16 @@
   },
   "fiche" : {
     "heading" : "Fiche Consultation",
-    "content" : "A total of {{ this.queries.newFicheSalesHbb + this.queries.oldFicheSalesHbb }} charges were made for fiche consultations; {{ this.queries.newFicheSalesHbb }} for 'Nouvelle Fiche' and {{ this.queries.oldFicheSalesHbb }} for 'Anciennce Fiche'."
+    "content" : "A total of {{ this.queries.newFicheSalesHbb.total + this.queries.oldFicheSalesHbb.total }} charges were made for fiche consultations; {{ this.queries.newFicheSalesHbb.total }} for 'Nouvelle Fiche' and {{ this.queries.oldFicheSalesHbb.total }} for 'Anciennce Fiche'."
   },
   "notices" : {
     "info" : {
       "heading" : "Info",
-      "content" : "Please note this is an automated report based on data captured by BHIMA. It is intended to provide transparent financial and system health information to the administration of IMCK. This message will not be shown again."
+      "content" : "Please note this is an automated report based on queries captured by BHIMA. It is intended to provide transparent financial and system health information to the administration of IMCK. This message will not be shown again."
     },
     "pax" : {
       "heading" : "PAX",
-      "content" : "BHIMA is currently being installed at PAX. Following reports will include data for the enterprise as a whole, including both HBB and PAX."
+      "content" : "BHIMA is currently being installed at PAX. Following reports will include queries for the enterprise as a whole, including both HBB and PAX."
     }
   },
   "warnings" : {

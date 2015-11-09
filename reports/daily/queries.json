@@ -41,7 +41,7 @@
     "type" : "number"
   },
   "totalSalesHbb" : {
-    "query" : "SELECT COUNT(uuid) as \"total\" FROM sale WHERE invoice_date = {{ this.date.from }}AND sale.project_id = 1 AND sale.uuid NOT IN (SELECT sale_uuid FROM credit_note);",
+    "query" : "SELECT COUNT(uuid) as \"total\" FROM sale WHERE invoice_date = {{ this.date.from }} AND sale.project_id = 1 AND sale.uuid NOT IN (SELECT sale_uuid FROM credit_note);",
     "type" : "number"
   },
   "totalSalesPax" : {
@@ -59,17 +59,17 @@
     "format" : "en"
   },
   "principalCashBalanceHbb" : {
-    "query" : "SELECT SUM(debit_equiv - credit_equiv) as \"total\" FROM posting_journal WHERE account_id IN (2935, 2939) UNION ALL SELECT SUM(debit_equiv - credit_equiv) FROM general_ledger WHERE account_id IN (2935, 2939);",
+    "query" : "SELECT SUM(debit_equiv - credit_equiv) as total FROM (SELECT debit_equiv, credit_equiv FROM  posting_journal WHERE account_id IN (2935, 2939) AND trans_date = {{ this.date.from }} UNION ALL SELECT debit_equiv, credit_equiv FROM general_ledger WHERE account_id IN (2935, 2939) AND trans_date = {{ this.date.from }}) AS t;",
     "type" : "currency",
     "format" : "en"
   },
   "auxCashHbb" : {
-    "query" : "SELECT SUM(if(currency_id = 2, cost * 930, cost )) as \"total\" FROM cash WHERE  project_id = 1 AND date={{ this.date.from }}AND uuid NOT IN (SELECT cash_uuid FROM cash_discard);",
+    "query" : "SELECT SUM(if(currency_id = 2, cost * 930, cost )) as \"total\" FROM cash WHERE  project_id = 1 AND date={{ this.date.from }} AND uuid NOT IN (SELECT cash_uuid FROM cash_discard);",
     "type" : "currency",
     "format" : "fr"
   },
   "auxCashPax" : {
-    "query" : "SELECT SUM(if(currency_id = 2, cost * 930, cost )) as \"total\" FROM cash WHERE  project_id = 2 AND date={{ this.date.from }}AND uuid NOT IN (SELECT cash_uuid FROM cash_discard);",
+    "query" : "SELECT SUM(if(currency_id = 2, cost * 930, cost )) as \"total\" FROM cash WHERE  project_id = 2 AND date={{ this.date.from }} AND uuid NOT IN (SELECT cash_uuid FROM cash_discard);",
     "type" : "currency",
     "format": "fr"
   },
