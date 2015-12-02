@@ -1,18 +1,18 @@
 {
   "newPatientsHbb" : {
-    "query" : "SELECT COUNT(uuid) as \"total\", CONCAT('week_', WEEK(registration_date, 5) - WEEK(DATE_SUB(registration_date, INTERVAL DAYOFMONTH(registration_date) - 1 DAY), 5) + 1 ) as period FROM patient WHERE registration_date >= {{ this.date.from }} AND registration_date <= {{ this.date.to }} AND renewal = 0 AND project_id = 1 GROUP BY period;",
+    "query" : "SELECT COUNT(uuid) as \"total\", CONCAT('week_', WEEK(registration_date, 5) - WEEK(DATE_SUB(registration_date, INTERVAL DAYOFMONTH(registration_date) - 1 DAY), 5) + 1 ) as period FROM patient WHERE DATE(registration_date) >= {{ this.date.from }} AND DATE(registration_date) <= {{ this.date.to }} AND renewal = 0 AND project_id = 1 GROUP BY period;",
     "type" : "number"
   },
   "newPatientsPax" : {
-    "query" : "SELECT COUNT(uuid) as \"total\", CONCAT('week_', WEEK(registration_date, 5) - WEEK(DATE_SUB(registration_date, INTERVAL DAYOFMONTH(registration_date) - 1 DAY), 5) + 1 ) as period FROM patient WHERE registration_date >= {{ this.date.from }} AND registration_date <= {{ this.date.to }} AND renewal = 0 AND project_id = 2 GROUP BY period;",
+    "query" : "SELECT COUNT(uuid) as \"total\", CONCAT('week_', WEEK(registration_date, 5) - WEEK(DATE_SUB(registration_date, INTERVAL DAYOFMONTH(registration_date) - 1 DAY), 5) + 1 ) as period FROM patient WHERE DATE(registration_date) >= {{ this.date.from }} AND DATE(registration_date) <= {{ this.date.to }} AND renewal = 0 AND project_id = 2 GROUP BY period;",
     "type" : "number"
   },
   "returningPatientsHbb" : {
-    "query" : "SELECT COUNT(uuid) as \"total\", CONCAT('week_', WEEK(registration_date, 5) - WEEK(DATE_SUB(registration_date, INTERVAL DAYOFMONTH(registration_date) - 1 DAY), 5) + 1 ) as period FROM patient WHERE registration_date >= {{ this.date.from }} AND registration_date <= {{ this.date.to }} AND renewal = 1 AND project_id = 1 GROUP BY period;",
+    "query" : "SELECT COUNT(uuid) as \"total\", CONCAT('week_', WEEK(registration_date, 5) - WEEK(DATE_SUB(registration_date, INTERVAL DAYOFMONTH(registration_date) - 1 DAY), 5) + 1 ) as period FROM patient WHERE DATE(registration_date) >= {{ this.date.from }} AND DATE(registration_date) <= {{ this.date.to }} AND renewal = 1 AND project_id = 1 GROUP BY period;",
     "type" : "number"
   },
   "returningPatientsPax" : {
-    "query" : "SELECT COUNT(uuid) as \"total\", CONCAT('week_', WEEK(registration_date, 5) - WEEK(DATE_SUB(registration_date, INTERVAL DAYOFMONTH(registration_date) - 1 DAY), 5) + 1 ) as period FROM patient WHERE registration_date >= {{ this.date.from }} AND registration_date <= {{ this.date.to }} AND renewal = 1 AND project_id = 2 GROUP BY period;",
+    "query" : "SELECT COUNT(uuid) as \"total\", CONCAT('week_', WEEK(registration_date, 5) - WEEK(DATE_SUB(registration_date, INTERVAL DAYOFMONTH(registration_date) - 1 DAY), 5) + 1 ) as period FROM patient WHERE DATE(registration_date) >= {{ this.date.from }} AND DATE(registration_date) <= {{ this.date.to }} AND renewal = 1 AND project_id = 2 GROUP BY period;",
     "type": "number"
   },
   "newFicheSalesHbb" : {

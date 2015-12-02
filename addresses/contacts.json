@@ -1,4 +1,4 @@
-{
+ {
   "Steven Fountain" : {
     "language" : "en",
     "address" : "StevenFountain1@gmail.com"
@@ -27,12 +27,16 @@
     "language" : "fr",
     "address" : "bernardkabibu@gmail.com"
   },
-  "Moise Mgalamulume" : {
+  "Moise Ngalamulume" : {
     "language" : "fr",
-    "address" : "ngalamulumemoise@gmail.com"
+    "address" : "moisengalam@yahoo.fr"
   },
   "Alex Mayambi" : {
     "language" : "fr",
     "address" : "phmayambi@gmail.com"
+  },
+  "Delva Kitamuka" : {
+    "language" : "en",
+    "address" : "dedrick_kitamuka@yahoo.fr"
   }
 }

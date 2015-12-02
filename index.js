@@ -112,7 +112,7 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
 
   var dateFrom = new Date(), dateTo = date;
 
-   switch (email) {
+  switch (email) {
     
     case 'daily':
       console.log('[MailPlugin] Configuring the daily mail ...');
@@ -155,8 +155,7 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
       // all queries return a single number in the `total` field
       // var result = (rows.length) ? rows[0].total : 0;
 
-      var results = rows
-
+      var results = rows;
 
       // if the result is a currency, make sure it is in the correct locality
       // NOTE : this is NOT the email locality, it is defined by the query.

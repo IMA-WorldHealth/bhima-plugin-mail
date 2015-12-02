@@ -1,18 +1,18 @@
 {
   "newPatientsHbb" : {
-    "query" : "SELECT COUNT(uuid) as \"total\", DAYNAME(registration_date) as period FROM patient WHERE registration_date >= {{ this.date.from }} AND registration_date <= {{ this.date.to }} AND renewal = 0 AND project_id = 1 GROUP BY period;",
+    "query" : "SELECT COUNT(uuid) as \"total\", DAYNAME(registration_date) as period FROM patient WHERE DATE(registration_date) >= {{ this.date.from }} AND DATE(registration_date) <= {{ this.date.to }} AND renewal = 0 AND project_id = 1 GROUP BY period;",
     "type" : "number"
   },
   "newPatientsPax" : {
-    "query" : "SELECT COUNT(uuid) as \"total\", DAYNAME(registration_date) as period FROM patient WHERE registration_date >= {{ this.date.from }} AND registration_date <= {{ this.date.to }} AND renewal = 0 AND project_id = 2 GROUP BY period;",
+    "query" : "SELECT COUNT(uuid) as \"total\", DAYNAME(registration_date) as period FROM patient WHERE DATE(registration_date) >= {{ this.date.from }} AND DATE(registration_date) <= {{ this.date.to }} AND renewal = 0 AND project_id = 2 GROUP BY period;",
     "type" : "number"
   },
   "returningPatientsHbb" : {
-    "query" : "SELECT COUNT(uuid) as \"total\", DAYNAME(registration_date) as period FROM patient WHERE registration_date >= {{ this.date.from }} AND registration_date <= {{ this.date.to }} AND renewal = 1 AND project_id = 1 GROUP BY period;",
+    "query" : "SELECT COUNT(uuid) as \"total\", DAYNAME(registration_date) as period FROM patient WHERE DATE(registration_date) >= {{ this.date.from }} AND DATE(registration_date) <= {{ this.date.to }} AND renewal = 1 AND project_id = 1 GROUP BY period;",
     "type" : "number"
   },
   "returningPatientsPax" : {
-    "query" : "SELECT COUNT(uuid) as \"total\", DAYNAME(registration_date) as period FROM patient WHERE registration_date >= {{ this.date.from }} AND registration_date <= {{ this.date.to }} AND renewal = 1 AND project_id = 2 GROUP BY period;",
+    "query" : "SELECT COUNT(uuid) as \"total\", DAYNAME(registration_date) as period FROM patient WHERE DATE(registration_date) >= {{ this.date.from }} AND DATE(registration_date) <= {{ this.date.to }} AND renewal = 1 AND project_id = 2 GROUP BY period;",
     "type": "number"
   },
   "newFicheSalesHbb" : {
