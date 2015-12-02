@@ -18,4 +18,4 @@ module.exports = {
     'frequency' : '0 21 28-31 * *',
     'addressList' : 'test'
   }]
-}
+};
