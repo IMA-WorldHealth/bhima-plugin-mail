@@ -1,4 +1,12 @@
 module.exports = {
+  'appname' : 'bhima',
+  'version' : '0.1.1',
+  'db' : {
+    'host':     'localhost',
+    'user':     'bhima',
+    'password': 'HISCongo2013',
+    'database': 'bhima'
+  },
   'emails' : [{
    'name' : 'daily',
     'frequency' : '0 19 * * *',

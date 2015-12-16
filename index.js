@@ -15,10 +15,8 @@
 */
 
 // Global Constants
-// TODO refactor into custom config.js
-var VERSION = '0.1.0',
-    APPNAME = 'bhima',
-    CONFIG  = './config.js';
+var CONFIG_PATH = './config.js';
+var config = require(CONFIG_PATH);
 
 // global imports
 var q = require('q'),
@@ -27,22 +25,22 @@ var q = require('q'),
     later = require('later');
 
 // local imports
-var render = require(path.join(__dirname, 'lib/render')),
-    mailer = require(path.join(__dirname, 'lib/mailer')),
+var render   = require(path.join(__dirname, 'lib/render')),
+    mailer   = require(path.join(__dirname, 'lib/mailer')),
     archiver = require(path.join(__dirname, 'lib/archiver')),
-    query = require(path.join(__dirname,'lib/query')),
-    locales = require(path.join(__dirname,'lib/locales')),
-    util = require(path.join(__dirname, 'lib/util')),
+    db       = require(path.join(__dirname,'lib/query'))(config),
+    locales  = require(path.join(__dirname,'lib/locales')),
+    util     = require(path.join(__dirname, 'lib/util')),
 
     // email addresses
     addressBook = require(path.join(__dirname, 'addresses/list.json')),
-    contacts = require(path.join(__dirname, 'addresses/contacts.json'));
+    contacts    = require(path.join(__dirname, 'addresses/contacts.json'));
 
 
 function MailPlugin() {
   'use strict';
 
-  var options = require(CONFIG);
+  var options = require(CONFIG_PATH);
 
   this._running = true;
   this._timestamp = Date.now();
@@ -85,7 +83,7 @@ MailPlugin.prototype._configure = function configure() {
 MailPlugin.prototype.reconfigure = function reconfigure(options) {
 
   // if a new configuration has not been provided, reload the old
-  options = options || require(CONFIG);
+  options = options || require(CONFIG_PATH);
 
   this._emails = options.emails || [];
   this._timers = [];
@@ -112,30 +110,27 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
 
   var dateFrom = new Date(), dateTo = date;
 
-  switch (email) {
+  console.log('[MailPlugin] Configuring the %s mail ...', email);
 
+  switch (email) {
     case 'daily':
-      console.log('[MailPlugin] Configuring the daily mail ...');
       break;
 
     case 'weekly':
-      console.log('[MailPlugin] Configuring the weekly mail ...');
       dateFrom.setDate(date.getDate() - date.getDay());
       break;
 
     case 'monthly':
-      console.log('[MailPlugin] Configuring the monthly mail ...');
       dateFrom.setDate(1);
       break;
 
     default:
-      console.log('Cannot understand email name');
+      console.log('Could not match the %s email identifier', email);
       break;
   }
 
   dateFrom = '\'' + dateFrom.getFullYear() + '-0' + (dateFrom.getMonth() + 1) + '-' + dateFrom.getDate() + ' 00:00:00\'';
   dateTo = '\'' + dateTo.getFullYear() + '-0' + (dateTo.getMonth() + 1) + '-' + (dateTo.getDate())  + ' 00:00:00\'';
-
 
   // loop through the queries and do the following:
   // 1) template in the date fields
@@ -149,7 +144,7 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
         sql = render(template.query, { date : { to : dateTo, from : dateFrom }});
 
     // execute the templated query
-    query(sql)
+    db.query(sql)
     .then(function (rows) {
 
       // all queries return a single number in the `total` field
