@@ -1,2 +1,13 @@
 # ignore addess list (private emails)
 addresses/*
+
+# ignore backs
+*.bak
+
+# ignore editor-specific working files
+*.swp,*.swo,*.swn
+
+# ignore NPM debug files
+.npm-debug.log
+
+# ignore zipped files

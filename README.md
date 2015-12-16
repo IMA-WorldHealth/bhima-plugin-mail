@@ -5,7 +5,7 @@ Introduction
 ------------
 
 The mail plugin allows for customized reports to be emailed on a regular basis.  The plugin is modular, and designed to
-allow reports to be added, easily configured, and scheduled both on the fly and at startup via config files.
+allow reports to be added, easily configured, and scheduled both on the fly and at start up via config files.
 
 ### Dependencies
 
@@ -35,7 +35,7 @@ reports/              # email reports are specified in individual folders here
   daily/              # template, queries, and data for daily report
     - daily.tmpl.html # html template to be rendered
     lang/             # contains i18n JSONs
-      - en.json       # english text
+      - en.json       # English text
       - fr.json       # french text
     - queries.json    # database queries required for this report.
 ```
@@ -58,7 +58,7 @@ by copying a file folder and modifying the list of plugins in `config.js`.
 ### Developing new reports
 
 All emails are defined in the `reports/`.  To add a new report, ensure that the report name is the same
-as in the configuration file and simply drop the rport folder into `reports/`.
+as in the configuration file and simply drop the report folder into `reports/`.
 
 ### LICENSE
 

@@ -1,18 +1,18 @@
 /**
- * Mail Plugin
- *
- * Extends bhima to allow email reporting at a custom frequency.
- * Depends on later.js (http://bunkat.github.io/later/) and q.
- *
- * PLUGIN OPTIONS
- * {
- *   emails : [{
- *     name : 'Daily Financial Report',
- *     frequency : 'daily',
- *     addressList : 'developers'
- *   }]
- * ]
- */
+* Mail Plugin
+*
+* Extends bhima to allow email reporting at a custom frequency.
+* Depends on later.js (http://bunkat.github.io/later/) and q.
+*
+* PLUGIN OPTIONS
+* {
+*   emails : [{
+*     name : 'Daily Financial Report',
+*     frequency : 'daily',
+*     addressList : 'developers'
+*   }]
+* ]
+*/
 
 // Global Constants
 // TODO refactor into custom config.js
@@ -54,7 +54,7 @@ function MailPlugin() {
 }
 
 // interpret the cron tasks and schedule them
-MailPlugin.prototype._configure = function () {
+MailPlugin.prototype._configure = function configure() {
   var self = this,
       schedule;
 
@@ -82,7 +82,7 @@ MailPlugin.prototype._configure = function () {
 };
 
 // respond to a reconfigure event from the client
-MailPlugin.prototype.reconfigure = function (options) {
+MailPlugin.prototype.reconfigure = function reconfigure(options) {
 
   // if a new configuration has not been provided, reload the old
   options = options || require(CONFIG);
@@ -113,7 +113,7 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
   var dateFrom = new Date(), dateTo = date;
 
   switch (email) {
-    
+
     case 'daily':
       console.log('[MailPlugin] Configuring the daily mail ...');
       break;
@@ -186,7 +186,7 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
 
     // convert promise array to a data object
     Object.keys(queries).forEach(function (key, idx) {
-      data[key] = results[idx].results;          
+      data[key] = results[idx].results;
     });
 
     data = lineUp(data);
@@ -226,12 +226,17 @@ MailPlugin.prototype.send = function (list, email, contact, date) {
   .done();
 };
 
+// @todo -- documenation for this method
 function lineUp(data){
 
   Object.keys(data).forEach(function (key, idx){
-    var obj = {}; //will contains transformed data from array
-    data[key].forEach(function (item){
-      item.period ? obj[item.period] = {"total" : item.total} : obj["total"] = item.total;
+    var obj = {}; // will contains transformed data from array
+    data[key].forEach(function (item) {
+      if (item.period) {
+        obj[item.period] = { 'total' : item.total };
+      } else {
+        obj.total = item.total;
+      }
     });
     data[key] = obj;
   });
